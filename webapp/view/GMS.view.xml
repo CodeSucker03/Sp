@@ -1,0 +1,220 @@
+<mvc:View
+    controllerName="com.sphinxjsc.spbase.controller."
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:uxap="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns="sap.m"
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:table="sap.ui.table"
+    xmlns:columnmenu="sap.m.table.columnmenu"
+    xmlns:u="sap.ui.unified"
+    xmlns:vm="sap.ui.fl.variants"
+    xmlns:sap.ui.fl="sap.ui.fl"
+    xmlns:sap.ui.dt="sap.ui.dt"
+>
+    <uxap:ObjectPageLayout
+        id="ObjectPageLayoutGMS"
+        isChildPage="true"
+        showTitleInHeaderContent="true"
+        alwaysShowContentHeader="false"
+        preserveHeaderStateOnScroll="false"
+        headerContentPinnable="true"
+        upperCaseAnchorBar="false"
+        showFooter="true"
+    >
+        <uxap:headerTitle>
+            <uxap:ObjectPageDynamicHeaderTitle>
+                <uxap:expandedHeading>
+                    <VBox>
+                        <Title text="{detailNCC>/thongTinDangky/CompanyName}" />
+                        <Text text="{detailNCC>/thongTinDangky/CompanyName}" />
+                    </VBox>
+                </uxap:expandedHeading>
+            </uxap:ObjectPageDynamicHeaderTitle>
+        </uxap:headerTitle>
+
+        <uxap:headerContent>
+            <VBox
+                alignContent="Start"
+                class="sapUiSmallMarginPadding"
+            >
+                <HBox
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                >
+                    <VBox>
+                        <Title text="{i18n>thongTinChung}" />
+                        <HBox>
+                            <Label
+                                text="{i18n>nguoiDaiDien}"
+                                class="sapUiSmallMarginEnd"
+                            />
+
+                            <Text text="{detailNCC>/thongTinDangKy/NddHoTen}" />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                text="{i18n>diaChi}"
+                                class="sapUiSmallMarginEnd"
+                            />
+                            <Text
+                                text="{detailNCC>/thongTinDangKy/CompanyAddress}"
+                            />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                text="{i18n>thoiGianThanhLap}"
+                                class="sapUiSmallMarginEnd"
+                            />
+
+                            <Text
+                                text="{detailNCC>/thongTinDangKy/Taxnumber}"
+                            />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                text="{i18n>thoiGianThanhLap}"
+                                class="sapUiSmallMarginEnd"
+                            />
+
+                            <Text
+                                text="{detailNCC>/thongTinDangKy/Taxnumber}"
+                            />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                text="{i18n>thoiGianThanhLap}"
+                                class="sapUiSmallMarginEnd"
+                            />
+
+                            <Text
+                                text="{detailNCC>/thongTinDangKy/Taxnumber}"
+                            />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                text="{i18n>website}:"
+                                class="sapUiSmallMarginEnd"
+                            />
+
+                            <Text text="{detailNCC>/thongTinDangKy/Website}" />
+                        </HBox>
+                    </VBox>
+                    <VBox>
+                        <Title text="{i18n>thongTinLienHe}" />
+                        <HBox>
+                            <Label
+                                text="{i18n>SDT}:"
+                                class="sapUiSmallMarginEnd"
+                            />
+
+                            <Text text="{detailNCC>/thongTinDangKy/DmSdt}" />
+                        </HBox>
+                        <HBox>
+                            <Label
+                                text="{i18n>Email}:"
+                                class="sapUiSmallMarginEnd"
+                            />
+                            <Text text="{detailNCC>/thongTinDangKy/DmEmail}" />
+                        </HBox>
+                    </VBox>
+                    <VBox>
+                        <Title text="{i18n>danhGiaDonHang}" />
+                        <RatingIndicator editable="false" />
+                    </VBox>
+                    <VBox>
+                        <Title text="{i18n>soLuongDonMua}" />
+                        <HBox>
+                            <core:Icon src="sap-icon://cart-approval" />
+                            <Text
+                                text=""
+                                class="sapUiSmallMarginBegin"
+                            />
+                        </HBox>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </uxap:headerContent>
+
+        <uxap:sections>
+            <uxap:ObjectPageSection>
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+                        <Panel id="taoTaiKhoanUserGMS">
+                            <Label id="labelCheckTaiKhoanGMS" />
+                            <VBox>
+                                <HBox
+                                    id="buttonStartGMS"
+                                    visible="false"
+                                >
+                                    <Button
+                                        id="buttonTaoTaiKhoanGMS"
+                                        text="Xác nhận tạo tài khoản"
+                                        type="Emphasized"
+                                        press="taoTaiKhoan"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="buttonKhoiTaoQuyTrinhGMS"
+                                        text="Khởi tạo quy trình duyệt tài khoản"
+                                        enabled="true"
+                                        type="Emphasized"
+                                        press="StartProset"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </Panel>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection
+                title="{i18n>thongTinDangKy}"
+                id="detailG"
+            >
+                <uxap:subSections>
+                    <core:Fragment
+                        fragmentName="sp5.view.fragments.ThongTinDangKy"
+                        type="XML"
+                    />
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection
+                title="{i18n>lichSuPheDuyet}"
+                id="lichSuPheDuyet"
+            >
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection class="sapUiLargeMarginBottom">
+                        <uxap:blocks>
+                            <core:Fragment
+                                fragmentName="sp5.view.fragments.LichSuPheDuyet"
+                                type="XML"
+                            />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection
+                title="{i18n>lichSuCungUng}"
+                id="lichSuPheCungUng"
+            >
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection class="sapUiLargeMarginBottom">
+                        <uxap:blocks>
+                            <core:Fragment
+                                fragmentName="sp5.view.fragments.LichSuCungUng"
+                                type="XML"
+                            />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+    </uxap:ObjectPageLayout>
+</mvc:View>

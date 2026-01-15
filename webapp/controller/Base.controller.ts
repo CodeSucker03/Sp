@@ -237,7 +237,6 @@ export default class Base extends Controller {
       parts: [],
     };
 
-
     const binding = bindingInfo.binding;
     console.log(binding);
 
@@ -269,5 +268,63 @@ export default class Base extends Controller {
     console.log(value.target);
 
     return value;
+  }
+
+  protected getFormFragment(fragmentName: string): Promise<Fragment> {
+    const view = this.getView();
+    const formFragment: Promise<Fragment> = Fragment.load({
+      id: view?.getId(),
+      name: `mstt.sp5.view.fragments.${fragmentName}`,
+      controller: this,
+    }).then((fragment: any) => {
+      this.getView()?.addDependent(fragment);
+      return fragment;
+    });
+
+    return formFragment;
+  }
+
+  // #region download file
+
+  protected downloadFile(sPath: string, fileName: string | null = null, oBusy: any | null = null): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this._download(sPath)
+        .then((blob: any) => {
+          var url = window.URL.createObjectURL(blob);
+          var link = document.createElement("a");
+          link.href = url;
+
+          if (fileName) {
+            link.setAttribute("download", fileName);
+          }
+
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        })
+        .catch((error: any) => {
+          console.log("Download error", error);
+          reject(error);
+        })
+        .finally(() => {
+          oBusy?.setBusy(false);
+        });
+    });
+  }
+
+  protected _download(url: string): Promise<Blob> {
+    const settings: JQueryAjaxSettings = {
+      url: url,
+      method: "GET",
+      xhrFields: {
+        responseType: "blob",
+      },
+    };
+
+    return new Promise((resolve, reject) => {
+      $.ajax(settings)
+        .done((result: Blob) => resolve(result))
+        .fail((err) => reject(err));
+    });
   }
 }

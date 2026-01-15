@@ -1,0 +1,78 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+    xmlns:columnmenu="sap.m.table.columnmenu"
+    xmlns:u="sap.ui.unified"
+    xmlns:vm="sap.ui.fl.variants"
+    xmlns:sap.ui.fl="sap.ui.fl"
+    xmlns:sap.ui.dt="sap.ui.dt"
+>
+    <Dialog
+        title="{i18n>moHoSoChaoGia}"
+        contentWidth="650px"
+    >
+        <Panel>
+            <HBox justifyContent="SpaceBetween">
+                <VBox>
+                    <VBox class="sapUiMediumMarginBottom">
+                        <Label text="{i18n>hinhThucMoHoSo}" />
+                        <Text
+                            text="{parts:[{path:'detailGMS>/dialogMoHoSoChaoGia/0/Hscg'},{value:'HSCG'}], formatter:'.getStatusText'}"
+                        />
+                    </VBox>
+                    <VBox>
+                        <Title
+                            text="{i18n>chungKien}"
+                            class="sapUiSmallMarginBottom"
+                        />
+
+                        <Label text="{i18n>user}" />
+                        <Text
+                            text="{detailGMS>/dialogMoHoSChaoGia/0/UserCheck}"
+                        />
+                    </VBox>
+                </VBox>
+                <VBox class="sapUiLargeMarginEnd">
+                    <VBox class="sapUiMediumMarginBottom">
+                        <Label text="{i18n>hinhThucMuaSam}" />
+                        <Text
+                            text="{parts:[{path:'detailGMS>/dialogMoHoSoChaoGia/0/Htms'},{value:'HTMS'}], formatter:'.getStatusText'}"
+                        />
+                    </VBox>
+                    <VBox>
+                        <Title
+                            text="{i18n>tgbdckmhs}"
+                            class="sapUiSmallMarginBottom"
+                        />
+
+                        <Label text="{i18n>thoiGianBatDau}" />
+                        <DateTimePicker
+                            id="dateTimeHoSoChaoGia"
+                            valueFormat="yyyy-MM-dd'T'HH:mm:ss"
+                            displayFormat="dd.MM.yyyy HH:mm:ss"
+                            change="onChangeDateTimeHoSoChaoGia"
+                            value="{detailGMS>/dialogMoHoSoChaoGia/0/dateTime}"
+                        />
+                    </VBox>
+                </VBox>
+            </HBox>
+        </Panel>
+        
+        <beginButton>
+            <Button
+                text="{i18n>gui}"
+                type="Emphasized"
+                press="submitHoSoChaoGia"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                text="{i18n>huy}"
+                type="Default"
+                press="closeDialogHoSoChaoGia"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

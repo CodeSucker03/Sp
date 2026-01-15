@@ -1,0 +1,98 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+    xmlns:columnmenu="sap.m.table.columnmenu"
+    xmlns:u="sap.ui.unified"
+    xmlns:vm="sap.ui.fl.variants"
+    xmlns:sap.ui.fl="sap.ui.fl"
+    xmlns:sap.ui.dt="sap.ui.dt"
+>
+    <ScrollContainer
+        height="800px"
+        horizontal="false"
+        vertical="true"
+    >
+        <Table
+            id="listNCC"
+            items="{ listNCC>/DSNCCChoDangKy }"
+            mode="None"
+            itemPress="navGMS"
+        >
+            <headerToolbar>
+                <OverflowToolbar class="sapMTBHeader-CTX">
+                    <Label
+                        text="{i18n>DSNCCChoDuyetDangKy}"
+                        design="Bold"
+                    />
+                    <ToolbarSpacer />
+                    <SearchField
+                        id="searchNCCChoDuyet"
+                        placeholder="Search"
+                        class="sapUiSmallMarginEnd"
+                        width="250px"
+                    />
+                    <MultiComboBox
+                        id="comboBoxNCCChoDuyet"
+                        items="{listNCC>/status}"
+                        placeholder="{i18n>pheDuyetDangKy}"
+                        width="250px"
+                        class="sapUiSmallMarginEnd"
+                    >
+                        <core:Item
+                            key="{listNCC>key}"
+                            text="{listNCC>text}"
+                        />
+                    </MultiComboBox>
+                    <ToolbarSpacer />
+                    <Button
+                        text="{i18n>timKiem}"
+                        type="Emphasized"
+                        press="searchNCCChoDuyet"
+                    />
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="{i18n>/tenTaiKhoan}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>/congTy}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>/ngayCapNhatDangKy}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>/diaChi}" />
+                </Column>
+            </columns>
+            <items>
+                <CustomListItem />
+                <ColumnListItem type="Navigation">
+                    <cells>
+                        <Link
+                            text="{listNCC>Username}"
+                            press="navGMSDetail"
+                        />
+                    </cells>
+                    <cells>
+                        <Text text="{listNCC>Companyname}" />
+                    </cells>
+                    <cells>
+                        <Text text="{listNCC>Ngaydk}" />
+                    </cells>
+                    <cells>
+                        <ObjectStatus
+                            text="{parts:['listNCC>Status'],formatter:'.formatStatus'}"
+                            state="{parts:['listNCC>Status'], formatter:'.formatState'}"
+                        />
+                    </cells>
+                    <cells>
+                        <Text text="{listNCC>Companyaddress}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </ScrollContainer>
+</core:FragmentDefinition>

@@ -1,0 +1,105 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+    xmlns:columnmenu="sap.m.table.columnmenu"
+    xmlns:u="sap.ui.unified"
+    xmlns:vm="sap.ui.fl.variants"
+    xmlns:sap.ui.fl="sap.ui.fl"
+    xmlns:sap.ui.dt="sap.ui.dt"
+>
+    <Panel>
+        <table:Table
+            selectionMode="None"
+            rows="{detailGMS>/danhSachPR}"
+        >
+            <table:extension>
+                <OverflowToolbar class="sapMTBHeader-CTX">
+                    <Title text="{i18n>danhSachPRPRItemDaBaoGia}" />
+                </OverflowToolbar>
+            </table:extension>
+            <table:columns>
+                <table:Column>
+                    <Label text="{i18n>maSo}" />
+                    <table:template>
+                        <Text text="{detailGMS>Mancc}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="{i18n>loaPr}" />
+                    <table:template>
+                        <Text text="{detailGMS>Banfn}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="{i18n>maGoiMuaSam}" />
+                    <table:template>
+                        <Text text="{detailGMS>Magms}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="{i18n>hangHoa}" />
+                    <table:template>
+                        <Text text="{detailGMS>Magms}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="{i18n>nhomHangHoa}" />
+                    <table:template>
+                        <Text text="{detailGMS>Magms}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="{i18n>soLuong}" />
+                    <table:template>
+                        <Text
+                            text="{detailGMS>Menge}"
+                            wrapping="false"
+                        />
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="{i18n>donViDo}" />
+                    <table:template>
+                        <Text text="{detailGMS>Magms}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="{i18n>gia}" />
+                    <table:template>
+                        <Text text="{detailGMS>Gia}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="{i18n>thue}" />
+                    <table:template>
+                        <Text text="{detailGMS>Thue}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="{i18n>chietKhau}" />
+                    <table:template>
+                        <Text text="{detailGMS>ChietKhau}" />
+                    </table:template>
+                </table:Column>
+                
+                <table:Column>
+                    <Label text="{i18n>thanhTien}" />
+                    <table:template>
+                        <Text text="{detailGMS>ThanhTien}" />
+                    </table:template>
+                </table:Column>
+            </table:columns>
+        </table:Table>
+    </Panel>
+</core:FragmentDefinition>

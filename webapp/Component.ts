@@ -6,12 +6,13 @@ import View from "sap/ui/core/mvc/View";
 import BaseComponent from "sap/ui/core/UIComponent";
 import Device from "sap/ui/Device";
 import JSONModel from "sap/ui/model/json/JSONModel";
-import { createDeviceModel } from "./model/models";
+import { createDeviceModel, ServiceUrls } from "./model/models";
 import type { ComponentData, Dict } from "./types/utils";
 import Messaging from "sap/ui/core/Messaging";
 import type MessageProcessor from "sap/ui/core/message/MessageProcessor";
 import { ErrorHandler } from "./controller/ErrorHandler";
 import ControlMessageProcessor from "sap/ui/core/message/ControlMessageProcessor";
+import ODataModel from "sap/ui/model/odata/v2/ODataModel";
 
 /**
  * @namespace com.sphinxjsc.spbase
@@ -50,6 +51,31 @@ export default class Component extends BaseComponent {
 
     // set the device model
     this.setModel(createDeviceModel(), "device");
+
+    // OData models (shared, single instance)
+    this.setModel(
+      new ODataModel(ServiceUrls.serviceUrl2, {
+        tokenHandling: true,
+        useBatch: false,
+      }),
+      "oModel2"
+    );
+
+     this.setModel(
+      new ODataModel(ServiceUrls.serviceUrl4, {
+        tokenHandling: true,
+        useBatch: false,
+      }),
+      "oModel4"
+    );
+
+    this.setModel(
+      new ODataModel(ServiceUrls.serviceUrl5, {
+        tokenHandling: true,
+        useBatch: false,
+      }),
+      "oModel5"
+    );
 
     // enable routing
     this.getRouter().initialize();

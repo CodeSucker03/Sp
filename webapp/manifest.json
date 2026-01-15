@@ -70,7 +70,11 @@
         "viewType": "XML",
         "path": "com.sphinxjsc.spbase.view",
         "async": true,
-        "viewPath": "com.sphinxjsc.spbase.view"
+        "viewPath": "com.sphinxjsc.spbase.view",
+        "clearControlAggregation": false,
+        "bypassed": {
+          "target": "notFound"
+        }
       },
       "routes": [
         {
@@ -79,12 +83,54 @@
           "target": [
             "TargetMain"
           ]
+        },
+        {
+          "name": "RouterGMS",
+          "pattern": "ncc/{Status}/{UserName}",
+          "target": [
+            "TargetGMS"
+          ]
+        },
+        {
+          "name": "RouterDonHang",
+          "pattern": "DonHang/{Magms}/{Mancc}",
+          "target": [
+            "TargetDonHang"
+          ]
+        },
+        {
+          "name": "RouterWorkflow",
+          "pattern": "workflow/{WorkItemId}/{Status}/{UserName}",
+          "target": [
+            "TargetGMS"
+          ]
         }
       ],
       "targets": {
         "TargetMain": {
           "id": "Main",
           "name": "Main"
+        },
+        "TargetGMS": {
+          "viewId": "GMS",
+          "viewName": "GMS",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "title": "{i18n>appTitle}",
+          "viewType": "XML"
+        },
+        "notFound": {
+          "viewId": "notFound",
+          "viewName": "NotFound",
+          "title": "{i18n>appTitle}"
+        },
+        "TargetDonHang": {
+          "viewId": "DonHang",
+          "viewName": "DonHang",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "title": "{i18n>appTitle}",
+          "viewType": "XML"
         }
       }
     },

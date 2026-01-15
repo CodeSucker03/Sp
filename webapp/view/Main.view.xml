@@ -1,12 +1,55 @@
 <mvc:View
     controllerName="com.sphinxjsc.spbase.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
     xmlns="sap.m"
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:table="sap.ui.table"
+    xmlns:columnmenu="sap.m.table.columnmenu"
+    xmlns:u="sap.ui.unified"
+    xmlns:vm="sap.ui.fl.variants"
+    xmlns:sap.ui.fl="sap.ui.fl"
+    xmlns:sap.ui.dt="sap.ui.dt"
 >
-    <Page
-        id="page"
-        title="{i18n>title}"
-    >
-        <Text text="Hello World!" />
-    </Page>
+    <IconTabBar class="sapUiResponsiveContentPadding">
+        <items>
+            <IconTabFilter
+                icon="sap-icon://group"
+                text="{i18n>pheDuyetDangKy}"
+                iconColor="Critical"
+                design="Horizontal"
+            >
+                <core:Fragment
+                    fragmentName="sp5.view.fragments.DSNCCChoDangKy"
+                    type="XML"
+                />
+            </IconTabFilter>
+            <IconTabFilter
+                icon="sap-icon://group"
+                text="{i18n>daDuyetDangKy}"
+                iconColor="Positive"
+                design="Horizontal"
+            >
+                <core:Fragment
+                    fragmentName="sp5.view.fragments.DSNCCDaDangKy"
+                    type="XML"
+                />
+            </IconTabFilter>
+            <IconTabFilter
+                icon="sap-icon://group"
+                text="{i18n>NCCHienHuu}"
+                iconColor="Critical"
+                design="Horizontal"
+            >
+                <core:Fragment
+                    fragmentName="sp5.view.fragments.DSNCCHienHuu"
+                    type="XML"
+                />
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
 </mvc:View>
