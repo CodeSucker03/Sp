@@ -44,6 +44,7 @@ export default class Component extends BaseComponent {
     this.MessageProcessor = new ControlMessageProcessor();
     this.MessageManager.registerMessageProcessor(this.MessageProcessor);
 
+    // Work only with odata defined
     // this.ErrorHandler = new ErrorHandler(this);
 
     this.setModel(this.MessageManager.getMessageModel(), "message");
